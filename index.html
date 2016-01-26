@@ -4,24 +4,29 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>YouQue</title>
-
+	
 	<link href="Styles/Foundation/css/foundation.css" rel="stylesheet" />
+	<link href="App/index.css" rel="stylesheet" />
 </head>
 <body>
 
-	<div class="row">
-		<div class="large-12 columns">
-			<h1>YouQue</h1>
+	<div class="large-9 columns height100">
+		<div class="player">
+			<div id="yt_player"></div>
 		</div>
+	</div>
+	<div class="large-3 columns height100">
+		<form>
+			<div class="input-group">
+				<span class="input-group-label">$</span>
+				<input class="input-group-field" type="number">
+				<div class="input-group-button">
+					<input type="submit" class="button" value="Submit">
+				</div>
+			</div>
+		</form>
 	</div>
 
-	<div class="row player">
-		<div class="large-12 columns">
-			<div class="flex-video">
-				<div id="yt_player"></div>
-			</div>
-		</div>
-	</div>
 
 	<script src="Scripts/jquery-2.2.0.min.js"></script>
 	<script src="Scripts/foundation.min.js"></script>
