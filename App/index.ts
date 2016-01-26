@@ -1,3 +1,6 @@
-﻿export class Test {
-	
+﻿export class Test
+{
+	private test: string;
+
+	constructor() { this.test = "test" }
 }
