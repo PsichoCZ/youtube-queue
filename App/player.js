@@ -1,33 +1,33 @@
+function Player(ytplayer){
+  this.ytplayer = ytplayer;
+  this.ytplayer.addEventListener('onReady', this.onPlayerReady.bind(this), false);
+  this.ytplayer.addEventListener('onStateChange', this.stateChange.bind(this), false);
+  this.ytplayer.addEventListener('onError', this.onPlayerError.bind(this), false);
+}
+
+Player.prototype.onPlayerReady = function(event) {
+};
+Player.prototype.onPlayerError = function(event){
+  console.log(event);
+};
+Player.prototype.stateChange = function(event) {
+  console.log(event);
+};
+
+//===================== Definition ==============================
+
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player('yt_player', {
+  ytplayer = new YT.Player('yt_player', {
     height: '390',
     width: '640',
-    videoId: 'M7lc1UVf-VE',
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
+    videoId: 'M7lc1UVf-VE'
   });
-}
-
-function onPlayerReady(event) {
-  event.target.playVideo();
-}
-
-var done = false;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 6000);
-    done = true;
-  }
-}
-function stopVideo() {
-  player.stopVideo();
+  console.log(ytplayer);
+  window.player = new Player(ytplayer);
 }
