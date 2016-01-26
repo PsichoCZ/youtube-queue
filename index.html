@@ -6,6 +6,7 @@
 	<title>YouQue</title>
 
 	<link href="Styles/Foundation/css/foundation.css" rel="stylesheet" />
+  <link href="Styles/Foundation/css/foundation-flex.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -22,9 +23,21 @@
 			</div>
 		</div>
 	</div>
+  <div class="row player">
+    <div class="large-12 columns">
+      <div class="input-group">
+        <input class="input-group-field" type="search">
+        <div class="input-group-button">
+          <a href="#" class="button">Search</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 	<script src="Scripts/jquery-2.2.0.min.js"></script>
 	<script src="Scripts/foundation.min.js"></script>
+  <script src="Scripts/vendor/what-input.min.js"></script>
 	<script src="Scripts/modernizr.js"></script>
 	<script src="Scripts/handlebars-v4.0.5.js"></script>
 	<script src="App/index.js"></script>
