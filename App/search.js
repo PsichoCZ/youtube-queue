@@ -7,7 +7,6 @@ function Search(){
 Search.prototype.fetch = function(){
   var view = this;
   this.q = this.$input.val();
-  console.log(this.q);
   this.url = "https://www.googleapis.com/youtube/v3/search?part=snippet"+
                                          "&q="+ this.q +
                                          "&type=video"+
@@ -27,13 +26,22 @@ Search.prototype.fetch = function(){
 
 Search.prototype.render = function(video){
   var view = this;
-  console.log(video);
-  var template = Handlebars.templates["video.hbs"]({
+  var track = {
     thumbnail: video.snippet.thumbnails.default.url,
     title: video.snippet.title,
     yt_id: video.id.videoId
+  };
+  var $template = $(Handlebars.templates["video.hbs"](track));
+  view.$results.append($template);
+  $template.find("#que_button").on("click", function(){
+    window.track_que.addTrack(track);
+    return false;
   });
-  view.$results.append(template);
+  $template.find("#play_button").on("click", function(){
+    window.player.play(track.yt_id);
+    return false;
+  });
+
 }
 
 //===================== Definition ==============================
