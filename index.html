@@ -31,14 +31,15 @@
 				</div>
 			</div>
 
-			<div class="input-group">
-			<input class="input-group-field" type="text">
-				<div class="input-group-button">
-				<a class="button" href="#">Search</a>
-			</div>
-		</div>
+		<div class="input-group">
+			<input class="input-group-field" type="text" id="search_q">
+			<div class="input-group-button">
+				<a class="button" id="search_button" href="#" onclick="window.search.fetch(); return false">Search</a>
+		   </div>
+	  </div>
+    <div id="search_results"></div>
 	</div>
-	</div>
+</div>
 
 	<script src="Scripts/jquery-2.2.0.min.js"></script>
 	<script src="Scripts/foundation.min.js"></script>
@@ -47,6 +48,8 @@
 	<script src="Scripts/handlebars-v4.0.5.js"></script>
 	<script src="App/index.js"></script>
 	<script src="App/player.js"></script>
+  <script src="App/search.js"></script>
+  <script src="App/templates/video.js"></script>
 	<script>
 		$(document).foundation();
 		$(document).ready(() => {
