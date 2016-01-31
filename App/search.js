@@ -15,7 +15,7 @@ Search.prototype.fetch = function(){
   $.ajax({
     url: view.url,
     type: "GET",
-    success: function(data){
+    success: function (data) {
       view.$results.html("");
       $.each(data.items, function(key,video){
         view.render(video);
