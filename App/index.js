@@ -13,8 +13,14 @@ MYAPP.getNextTrack = function () {
 MYAPP.addSearchResult = function (track) {
 	return MYAPP.viewModel.addSearchResult(track);
 }
+MYAPP.addSimilarItem = function (track) {
+	return MYAPP.viewModel.addSimilarItem(track);
+}
 MYAPP.clearResults = function () {
 	MYAPP.viewModel.clearResults();
+}
+MYAPP.clearSimilarItems = function() {
+	MYAPP.viewModel.clearSimilarItems();
 }
 
 var main = function () {

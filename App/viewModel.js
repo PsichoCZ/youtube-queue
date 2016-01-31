@@ -3,6 +3,7 @@ function AppViewModel() {
 	var self = this;
 	this.queue = ko.observableArray([]);
 	this.searchResults = ko.observableArray([]);
+	this.similarItems = ko.observableArray([]);
 
 	// Operations
 	self.addTrack = function (track) {
@@ -22,8 +23,17 @@ function AppViewModel() {
 		self.searchResults([]);
 	}
 
-	this.addTrackToQueue = function (model, event) {
+	self.addTrackToQueue = function (model, event) {
+		model.queued(true);
 		self.searchResults.remove(model);
 		self.queue.push(model);
 	};
+
+	self.addSimilarItem = function(track) {
+		self.similarItems.push(track);
+	};
+	
+	self.clearSimilarItems = function (){
+		self.similarItems([]);
+	}
 }

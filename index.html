@@ -19,9 +19,9 @@
 				<div id="yt_player"></div>
 			</div>
 			<div id="similar_container" class="similar-thumbs"></div>
+			<ul data-bind="sortable: { template: 'similarItemTmpl', data: similarItems }"></ul>
 		</div>
 		<div class="large-4 small-12 columns">
-			<div id="que_container"></div>
 			<ul data-bind="sortable: { template: 'itemTmpl', data: queue }"></ul>
 
 			<form class="input-group similar-options" id="search_form">
@@ -30,7 +30,6 @@
 					<a class="button" id="search_button" href="#">Search</a>
 				</div>
 			</form>
-			<div id="search_results"></div>
 			<ul data-bind="sortable: { template: 'itemTmpl', data: searchResults }"></ul>
 		</div>
 	</div>
@@ -49,17 +48,29 @@
 		<div class="media-object">
 			<div class="media-object-section">
 				<div class="thumbnail">
-					<img data-bind="attr: { src: thumbnail }" src="{{thumbnail}}">
+					<img data-bind="attr: { src: thumbnail }">
 				</div>
 			</div>
 			<div class="media-object-section">
 				<h4 data-bind="text: title"></h4>
-				<a href="#" class="button tiny alert" style="display: none;" id="deque_button">Remove</a>
-				<a href="#" class="button tiny" id="que_button" data-bind="click: $root.addTrackToQueue">Que</a>
+				<a href="#" class="button tiny alert" data-bind="visible: queued()" id="deque_button">Remove</a>
+				<a href="#" class="button tiny" id="que_button" data-bind="click: $root.addTrackToQueue, visible: !queued()">Que</a>
 				<a href="#" class="button tiny secondary" id="play_button">Play</a>
 			</div>
 		</div>
 	</script>
+
+	<script id="similarItemTmpl" type="text/html">
+		<div class="similar-thumb">
+			<img data-bind="attr: { src: thumbnail_medium }">
+			<div class="expanded button-group">
+				<a href="#" class="button tiny" data-bind="click: $root.addTrackToQueue" id="que_button">Que</a>
+				<a href="#" class="button tiny secondary" id="play_button">Play</a>
+			</div>
+			<p data-bind="text: title"></p>
+		</div>
+	</script>
+
 
 	<script src="App/trackModel.js"></script>
 	<script src="App/viewModel.js"></script>

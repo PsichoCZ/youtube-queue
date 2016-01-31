@@ -29,6 +29,7 @@ Search.prototype.render = function (video) {
 	var view = this;
 
 	var track = new TrackModel();
+	track.setThumbnailMedium(video.snippet.thumbnails.medium.url);
 	track.setThumbnail(video.snippet.thumbnails.default.url);
 	track.setTitle(video.snippet.title);
 	track.setYtId(video.id.videoId);
