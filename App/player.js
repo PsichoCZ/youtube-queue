@@ -20,7 +20,7 @@ Player.prototype.play = function(yt_id){
   if(typeof(this.ytplayer) === "undefined"){
     return;
   }
-  this.ytplayer.loadVideoById(yt_id);
+  this.ytplayer.cueVideoById(yt_id);
 }
 
 Player.prototype.onPlayerReady = function(event) {
@@ -32,10 +32,37 @@ Player.prototype.onPlayerError = function(event){
   console.log(event);
 };
 Player.prototype.stateChange = function(event) {
+  var view = this;
   if(event.data == 5){
-    this.ytplayer.playVideo();
+    view.ytplayer.playVideo();
+    window.similar.fetch(view.track.yt_id);
+  }
+  if(event.data == 0){
+    view.playNext();
   }
 };
+Player.prototype.getStatus = function() {
+  if(typeof(this.ytplayer) === "undefined"){
+    return -2;
+  }else{
+    return this.ytplayer.getPlayerState();
+  }
+};
+
+Player.prototype.onQueUpdate = function() {
+  var view = this;
+  if(typeof(view.track) === "undefined" || view.getStatus() == 0){
+    view.playNext();
+  }
+};
+
+Player.prototype.playNext = function() {
+  var view = this;
+  var track = window.track_que.getNextTrack();
+  if(track){
+    view.play(track.yt_id);
+  }
+}
 
 //===================== Definition ==============================
 
