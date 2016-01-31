@@ -16,10 +16,11 @@
 		<div class="flex-video widescreen">
 			<div id="yt_player"></div>
 		</div>
+    <div id="similar_container" class="similar-thumbs"></div>
 	</div>
 	<div class="large-4 small-12 columns">
     <div id="que_container"></div>
-		<div class="input-group">
+		<div class="input-group similar-options">
 			<input class="input-group-field" type="text" id="search_q">
 			<div class="input-group-button">
 				<a class="button" id="search_button" href="#" onclick="window.search.fetch(); return false">Search</a>
@@ -38,7 +39,9 @@
 	<script src="App/player.js"></script>
   <script src="App/search.js"></script>
   <script src="App/track_que.js"></script>
+  <script src="App/similar.js"></script>
   <script src="App/templates/video.js"></script>
+  <script src="App/templates/similar.js"></script>
 	<script>
 		$(document).foundation();
 		$(document).ready(() => {

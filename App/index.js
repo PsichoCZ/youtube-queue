@@ -3,6 +3,7 @@
   //window.player.play('we9jeU76Y9E');
   window.search = new Search();
   window.track_que = new TrackQue();
+  window.similar = new Similar();
 }
 
 

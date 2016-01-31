@@ -20,7 +20,7 @@ Player.prototype.play = function(yt_id){
   if(typeof(this.ytplayer) === "undefined"){
     return;
   }
-  this.ytplayer.loadVideoById(yt_id);
+  this.ytplayer.cueVideoById(yt_id);
 }
 
 Player.prototype.onPlayerReady = function(event) {
@@ -35,6 +35,7 @@ Player.prototype.stateChange = function(event) {
   var view = this;
   if(event.data == 5){
     view.ytplayer.playVideo();
+    window.similar.fetch(view.track.yt_id);
   }
   if(event.data == 0){
     view.playNext();
