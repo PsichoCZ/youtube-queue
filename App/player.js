@@ -58,7 +58,7 @@ Player.prototype.onQueUpdate = function() {
 
 Player.prototype.playNext = function() {
   var view = this;
-  var track = window.track_que.getNextTrack();
+	var track = MYAPP.getNextTrack();//window.track_que.getNextTrack();
   if(track){
     view.play(track.yt_id);
   }
